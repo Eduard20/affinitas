@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "mocha test/*"
+    "test": "mocha tests/index.js"
   },
   "repository": {
     "type": "git",
@@ -22,9 +22,13 @@
     "eslint-config-rallycoding": "^3.2.0"
   },
   "dependencies": {
+    "async": "^2.5.0",
     "body-parser": "^1.18.2",
     "express": "^4.15.5",
-    "mongoose": "^4.11.13",
+    "jade": "^1.11.0",
+    "jsonwebtoken": "^8.0.1",
+    "lodash": "^4.17.4",
+    "mongoose": "4.10.0",
     "morgan": "^1.9.0",
     "winston": "^2.3.1"
   }
