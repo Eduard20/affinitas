@@ -68,7 +68,7 @@ if ('development' === process.env.NODE_ENV) {
 app.use((err, req, res, next) => {
     if (404 !== err.status) winston.log('error', err);
     res.status(err.status || 500);
-    res.json({ message: err.message, error: {} });
+    res.json({ error: true, message: err.message });
 });
 
 /**

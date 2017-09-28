@@ -94,7 +94,7 @@ const queries = {
 
             (doc, callback) => {
                 if (data.password === doc.password) {
-                    return callback(null, { message: doc });
+                    return callback(null, doc);
                 }
                 callback({ error: true, message: text.passwordIncorrect, status: 200 });
             }

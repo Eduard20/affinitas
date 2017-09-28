@@ -91,7 +91,7 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$http', '$timeout', '$cooki
                 method: 'POST',
                 data: Data}).success(data => {
                 if (!data.error) {
-                    const token = data.message.token;
+                    const token = data.token;
                     $cookies.put('token', token);
                     $rootScope.isLogged = true;
                     location.reload();
