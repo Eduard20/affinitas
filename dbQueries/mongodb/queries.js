@@ -154,7 +154,7 @@ const queries = {
                 break;
         }
 
-        model.find({}, null, { lean: true, limit: 5 })
+        model.find({}, null, { lean: true })
             .then(doc => next(null, doc), err => next(err));
     },
 
