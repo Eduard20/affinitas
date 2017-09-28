@@ -41,6 +41,26 @@ const user = {
         });
     },
 
+    /**
+     * Get Answers From MongoDB
+     * @param {Object} req
+     * @param {Function} next
+     */
+
+    getAnswers: (req, next) => {
+        const email = tokenFunction.decode(req.headers.authorization);
+        mongoRequests.getAnswers(email, (err, result) => {
+            if (err) {
+                winston.log('error', err);
+                return next({ error: true });
+            }
+            return next({
+                status: 'OK',
+                result
+            });
+        });
+    }
+
 };
 
 module.exports = user;

@@ -160,6 +160,11 @@ const queries = {
 
     addAnswer: (data, next) => {
         AnswersModel.create(data, (err, doc) => err ? next(err) : next(err, doc));
+    },
+
+    getAnswers: (email, next) => {
+        AnswersModel.find({ email }, null, { lean: true })
+            .then(doc => next(null, doc), err => next(err));
     }
 
 };

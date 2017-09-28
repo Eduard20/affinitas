@@ -18,4 +18,8 @@ router.put('/answers', (req, res) => {
     userFunction.saveAnswers(req, result => res.send(result));
 });
 
+router.get('/answers', (req, res) => {
+    userFunction.getAnswers(req, result => res.send(result));
+});
+
 module.exports = router;
