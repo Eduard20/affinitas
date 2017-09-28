@@ -28,9 +28,11 @@ const defaultSchema = new Schema({}, {
 const UsersModel = mongoose.model('users', usersSchema);
 const CategoryModel = mongoose.model('categories', defaultSchema);
 const QuestionModel = mongoose.model('questions', defaultSchema);
+const AnswersModel = mongoose.model('answers', defaultSchema);
 
 module.exports = {
     UsersModel,
     CategoryModel,
-    QuestionModel
+    QuestionModel,
+    AnswersModel
 };

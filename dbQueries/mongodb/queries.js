@@ -13,7 +13,8 @@ const tokenFunction = require('../../modules/token');
 const {
     UsersModel,
     CategoryModel,
-    QuestionModel
+    QuestionModel,
+    AnswersModel
 } = require('./models');
 
 mongoose.Promise = Promise;
@@ -155,6 +156,10 @@ const queries = {
 
         model.find({}, null, { lean: true, limit: 5 })
             .then(doc => next(null, doc), err => next(err));
+    },
+
+    addAnswer: (data, next) => {
+        AnswersModel.create(data, (err, doc) => err ? next(err) : next(err, doc));
     }
 
 };

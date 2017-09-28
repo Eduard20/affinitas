@@ -34,6 +34,10 @@ app.controller('testCtrl', ['$scope', '$rootScope', '$http', '$timeout',
                     arr.push(data);
                 }
             }
+            $rootScope.httpRequest('answers', 'PUT', { data: arr }, data => {
+                if (!data.error) return $('#testSuccess').modal('open');
+                return ('#testFailed$').modal('open');
+            });
         };
     }
 ]);

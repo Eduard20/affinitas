@@ -2,7 +2,7 @@
     <form class="col s12" name="testForm" novalidate>
         <ul class="collapsible" data-collapsible="accordion">
             <li ng-repeat="(key, value) in questions">
-                <div class="collapsible-header">{{key}}</div>
+                <div class="collapsible-header">{{key}}<i class="material-icons right">keyboard_arrow_down</i></div>
                 <div class="collapsible-body">
                     <div class="row" ng-repeat="quest in value">
                         <div class="col s12">
@@ -53,8 +53,30 @@
     </form>
 </div>
 
+<!-- Modal Structure -->
+<div id="testSuccess" class="modal">
+    <div class="modal-content">
+        <h4>Test answers were successfully saved</h4>
+    </div>
+    <div class="modal-footer">
+        <a href="" class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="reload()">Close</a>
+    </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="testFailed" class="modal">
+    <div class="modal-content">
+        <h4>Something went wrong!!!</h4>
+        <p>Try Again Later</p>
+    </div>
+    <div class="modal-footer">
+        <a href="" class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="reload()">Close</a>
+    </div>
+</div>
+
 <script>
     $(document).ready(function(){
         $('.collapsible').collapsible();
+        $('.modal').modal();
     });
 </script>

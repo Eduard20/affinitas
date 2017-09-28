@@ -116,6 +116,9 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$http', '$timeout', '$cooki
             location.reload();
         };
 
+         $rootScope.reload = () => {
+             location.reload();
+         };
      }
 ]);
 
