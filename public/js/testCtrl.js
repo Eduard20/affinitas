@@ -1,16 +1,39 @@
 app.controller('testCtrl', ['$scope', '$rootScope', '$http', '$timeout',
     ($scope, $rootScope, $http, $timeout) => {
     $scope.questions = [];
+    let questions = [];
         function getQuestions() {
             $rootScope.httpRequest('questions', 'GET', {}, data => {
                 if (!_.isEmpty(data.questions)) {
                     $scope.questions = _.groupBy(data.questions, one => one.category);
-                    console.log($scope.questions);
+                    questions = data.questions;
                 }
             });
         }
         getQuestions();
         $scope.answers = {};
-        $scope.specialValue = {};
+        $scope.saveTestAnswers = () => {
+            let data = {};
+            const arr = [];
+            _.each(questions, one => {
+                if ('single_choice_conditional' === one.question_type.type) {
+                    if ($scope.answers[one.question]
+                        !== one.question_type.condition.predicate.exactEquals[1]) {
+                        if ($scope.answers[one.question_type.condition.if_positive.question]) {
+                            delete $scope.answers[one.question_type.condition.if_positive.question];
+                        }
+                    }
+                }
+            });
+            for (const key in $scope.answers) {
+                if ($scope.answers.hasOwnProperty(key)) {
+                    data = {
+                        question: key,
+                        answer: $scope.answers[key]
+                    };
+                    arr.push(data);
+                }
+            }
+        };
     }
 ]);

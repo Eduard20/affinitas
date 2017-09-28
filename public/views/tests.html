@@ -1,5 +1,5 @@
 <div class="row">
-    <form class="col s12" name="testForm">
+    <form class="col s12" name="testForm" novalidate>
         <ul class="collapsible" data-collapsible="accordion">
             <li ng-repeat="(key, value) in questions">
                 <div class="collapsible-header">{{key}}</div>
@@ -13,7 +13,31 @@
                                         <input class="with-gap" type="radio" id="{{quest.question + option + $index}}" ng-model="answers[quest.question]" value="{{option}}" required/>
                                         <label for="{{quest.question + option + $index}}">{{option}}</label>
                                     </p>
-                                    {{answers}}
+                                </div>
+                            </div>
+                            <div class="card blue-grey darken-1" ng-show="'single_choice_conditional' === quest.question_type.type">
+                                <div class="card-content white-text">
+                                    <span class="card-title">{{quest.question}}</span>
+                                    <p ng-repeat="option in quest.question_type.options track by $index">
+                                        <input class="with-gap" type="radio" id="{{quest.question + option + $index}}"
+                                               ng-model="answers[quest.question]"
+                                               value="{{option}}"
+                                               required
+                                        />
+                                        <label for="{{quest.question + option + $index}}">{{option}}</label>
+                                    </p>
+                                    <div class="card blue-grey darken-1" ng-show="'very important' === answers[quest.question]">
+                                        <div class="card-content white-text">
+                                            <span class="card-title">{{quest.question_type.condition.if_positive.question}}</span>
+                                            <p class="range-field">
+                                                <input type="range" id="{{quest.question_type.condition.if_positive.question}}"
+                                                       min="{{quest.question_type.condition.if_positive.question_type.range.from}}"
+                                                       max="{{quest.question_type.condition.if_positive.question_type.range.to}}"
+                                                ng-model="answers[quest.question_type.condition.if_positive.question]"
+                                                />
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -23,7 +47,7 @@
         </ul>
         <div class="row">
             <div class="input-field col s10 m10 l6">
-                <button type="submit" ng-click="" ng-disabled="testForm.$invalid" disabled="disabled" class="btn waves-effect waves-light">Submit<i class="material-icons right">send</i></button>
+                <button type="submit" ng-click="saveTestAnswers()" ng-disabled="testForm.$invalid" disabled="disabled" class="btn waves-effect waves-light">Submit<i class="material-icons right">send</i></button>
             </div>
         </div>
     </form>
