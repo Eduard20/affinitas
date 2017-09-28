@@ -7,6 +7,10 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider',
                 templateUrl: '../views/main.html',
                 controller: 'homeCtrl'
             })
+            .when('/tests', {
+                templateUrl: '../views/tests.html',
+                controller: 'testCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });

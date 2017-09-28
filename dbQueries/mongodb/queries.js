@@ -11,7 +11,9 @@ const async = require('async');
 const _ = require('lodash');
 const tokenFunction = require('../../modules/token');
 const {
-    UsersModel
+    UsersModel,
+    CategoryModel,
+    QuestionModel
 } = require('./models');
 
 mongoose.Promise = Promise;
@@ -130,8 +132,30 @@ const queries = {
                     message: text.userNotFound, status: 200
                 });
             }, err => next(err));
-    }
+    },
 
+    /**
+     * Get All Documents From Collection
+     * @param {String} type
+     * @param {Function} next
+     */
+
+    getAllData: (type, next) => {
+        let model;
+        switch (type) {
+            case 'category':
+                model = CategoryModel;
+                break;
+            case 'question':
+                model = QuestionModel;
+                break;
+            default:
+                break;
+        }
+
+        model.find({}, null, { lean: true })
+            .then(doc => next(null, doc), err => next(err));
+    }
 
 };
 

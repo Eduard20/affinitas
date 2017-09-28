@@ -1,0 +1,36 @@
+<div class="row">
+    <form class="col s12" name="testForm">
+        <ul class="collapsible" data-collapsible="accordion">
+            <li ng-repeat="(key, value) in questions">
+                <div class="collapsible-header">{{key}}</div>
+                <div class="collapsible-body">
+                    <div class="row" ng-repeat="quest in value">
+                        <div class="col s12">
+                            <div class="card blue-grey darken-1" ng-show="quest.question_type.type == 'single_choice' ">
+                                <div class="card-content white-text">
+                                    <span class="card-title">{{quest.question}}</span>
+                                    <p ng-repeat="option in quest.question_type.options track by $index">
+                                        <input class="with-gap" type="radio" id="{{quest.question + option + $index}}" ng-model="answers[quest.question]" value="{{option}}" required/>
+                                        <label for="{{quest.question + option + $index}}">{{option}}</label>
+                                    </p>
+                                    {{answers}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="row">
+            <div class="input-field col s10 m10 l6">
+                <button type="submit" ng-click="" ng-disabled="testForm.$invalid" disabled="disabled" class="btn waves-effect waves-light">Submit<i class="material-icons right">send</i></button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('.collapsible').collapsible();
+    });
+</script>

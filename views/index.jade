@@ -11,12 +11,15 @@ html(lang="en", ng-app='affinitas', ng-controller='mainCtrl')
         script(type='text/javascript', src='/files/js/lib/jquery-3.1.1.min.js')
         script(type='text/javascript', src='/files/js/lib/materialize.min.js')
         script(type='text/javascript', src='/files/js/lib/angular.min.js')
+        script(type='text/javascript', src='/files/js/lib/lodash.min.js')
         script(type='text/javascript', src='/files/js/lib/angular-cookies.js')
         script(type='text/javascript', src='/files/js/lib/angular-route.min.js')
         script(type='text/javascript', src='/files/js/lib/angular-sanitize.min.js')
         script(type='text/javascript', src='/files/js/app.js')
         script(type='text/javascript', src='/files/js/main.js')
         script(type='text/javascript', src='/files/js/homeCtrl.js')
+        script(type='text/javascript', src='/files/js/testCtrl.js')
+
 body
 nav
     .nav-wrapper
@@ -27,7 +30,7 @@ nav
             li
                 a(href = '/tests') Tests
             li
-                a(href='/battle') Battle
+                a(href='/analyze') Analyze
 
 ng-view
 script.
@@ -37,5 +40,4 @@ script.
         $('select').material_select();
         $('ul.tabs').tabs();
         $('.modal').modal();
-
     });

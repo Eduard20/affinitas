@@ -16,12 +16,21 @@ const usersSchema = new Schema({
     strict: false
 });
 
+const defaultSchema = new Schema({}, {
+    versionKey: false,
+    strict: false
+});
+
 /**
  * User Model
  */
 
 const UsersModel = mongoose.model('users', usersSchema);
+const CategoryModel = mongoose.model('categories', defaultSchema);
+const QuestionModel = mongoose.model('questions', defaultSchema);
 
 module.exports = {
-    UsersModel
+    UsersModel,
+    CategoryModel,
+    QuestionModel
 };
