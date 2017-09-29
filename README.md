@@ -1,14 +1,18 @@
 # affinitas
 # Personality Test
 
-login: affinitas@gmail.com
-pass: affinitas
-
 Step By Step Deployment
 
 1) git clone https://github.com/Eduard20/affinitas.git
-2) npm i
-3) npm start
+2) cd affinitas
+3) npm i
+4) npm start
+5) visit localhost:3000
+
+If you have no time to register use these credentials
+
+login: affinitas@gmail.com
+pass: affinitas
 
 If You want to run unit tests please follow instruction
 1) npm start
