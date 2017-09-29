@@ -37,7 +37,10 @@ const user = {
                 winston.log('error', err);
                 return next({ error: true });
             }
-            return next(result);
+            return next({
+                status: 'OK',
+                result
+            });
         });
     },
 
