@@ -6,7 +6,7 @@
 const jwt = require('jsonwebtoken');
 const config = require('../config');
 
-const token = {
+const tokenFunc = {
 
     /**
      * Generate JWT
@@ -29,4 +29,4 @@ const token = {
 
 };
 
-module.exports = token;
+module.exports = tokenFunc;

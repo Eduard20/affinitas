@@ -16,7 +16,6 @@ const auth = {
      */
 
     isAuth: (req, res, next) => {
-
         if (!req.headers.authorization) {
             res.status(401);
             res.json({ message: texts.unauthorized });
@@ -34,7 +33,6 @@ const auth = {
         });
 
     }
-
 };
 
 module.exports = auth;

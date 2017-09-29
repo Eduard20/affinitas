@@ -158,9 +158,21 @@ const queries = {
             .then(doc => next(null, doc), err => next(err));
     },
 
+    /**
+     * Add Answers
+     * @param {Object} data
+     * @param {Function} next
+     */
+
     addAnswer: (data, next) => {
         AnswersModel.create(data, (err, doc) => err ? next(err) : next(err, doc));
     },
+
+    /**
+     * Get Answers
+     * @param {String} email
+     * @param {Function} next
+     */
 
     getAnswers: (email, next) => {
         AnswersModel.find({ email }, null, { lean: true })

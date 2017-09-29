@@ -16,6 +16,10 @@ const usersSchema = new Schema({
     strict: false
 });
 
+/**
+ * Default Schema
+ */
+
 const defaultSchema = new Schema({}, {
     versionKey: false,
     strict: false

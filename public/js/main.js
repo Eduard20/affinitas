@@ -1,11 +1,6 @@
 app.controller('mainCtrl', ['$scope', '$rootScope', '$http', '$timeout', '$cookies',
      ($scope, $rootScope, $http, $timeout, $cookies) => {
-        $scope.reg_username = null;
-        $scope.reg_password = null;
-        $scope.reg_name = null;
-        $scope.reg_surname = null;
         $rootScope.isLogged = false;
-        $scope.formData = [];
         $rootScope.userInfo = {};
 
          /**
@@ -64,11 +59,6 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$http', '$timeout', '$cooki
 
         };
 
-        $scope.clearFields = () => {
-            $scope.reg_username = null;
-            $scope.reg_password = null;
-        };
-
          /**
           * Login
           * @param {String} username
@@ -115,6 +105,10 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$http', '$timeout', '$cooki
             $rootScope.isLogged = false;
             location.reload();
         };
+
+         /**
+          * Reload Page
+          */
 
          $rootScope.reload = () => {
              location.reload();

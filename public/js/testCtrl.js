@@ -2,6 +2,11 @@ app.controller('testCtrl', ['$scope', '$rootScope', '$http', '$timeout',
     ($scope, $rootScope, $http, $timeout) => {
     $scope.questions = [];
     let questions = [];
+
+        /**
+         * HTTP GET To Get All Questions
+         */
+
         function getQuestions() {
             $rootScope.httpRequest('questions', 'GET', {}, data => {
                 if (!_.isEmpty(data.questions)) {
@@ -11,10 +16,17 @@ app.controller('testCtrl', ['$scope', '$rootScope', '$http', '$timeout',
             });
         }
         getQuestions();
+
         $scope.answers = {};
+
+        /**
+         * Save Test Answer To MongoDB
+         */
+
         $scope.saveTestAnswers = () => {
             let data = {};
             const arr = [];
+
             _.each(questions, one => {
                 if ('single_choice_conditional' === one.question_type.type) {
                     if ($scope.answers[one.question]
@@ -25,6 +37,7 @@ app.controller('testCtrl', ['$scope', '$rootScope', '$http', '$timeout',
                     }
                 }
             });
+
             for (const key in $scope.answers) {
                 if ($scope.answers.hasOwnProperty(key)) {
                     data = {
@@ -34,6 +47,7 @@ app.controller('testCtrl', ['$scope', '$rootScope', '$http', '$timeout',
                     arr.push(data);
                 }
             }
+
             $rootScope.httpRequest('answers', 'PUT', { data: arr }, data => {
                 if (!data.error) return $('#testSuccess').modal('open');
                 return ('#testFailed$').modal('open');

@@ -1,6 +1,10 @@
-app.controller('homeCtrl', ['$scope', '$rootScope', '$http', '$timeout',
-    ($scope, $rootScope, $http, $timeout) => {
+app.controller('homeCtrl', ['$scope', '$rootScope',
+    ($scope, $rootScope) => {
     $scope.answers = [];
+
+        /**
+         * HTTP GET To Get Answers
+         */
         function getAnswers() {
             $rootScope.httpRequest('answers', 'GET', {}, data => {
                 if (!data.error) {
@@ -12,6 +16,7 @@ app.controller('homeCtrl', ['$scope', '$rootScope', '$http', '$timeout',
                 }
             });
         }
+
         getAnswers();
     }
 ]);
