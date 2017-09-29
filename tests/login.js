@@ -19,10 +19,8 @@ describe('login: negative cases', () => {
             .set('content-type', 'application/json')
             .send(body)
             .end((err, res) => {
-                // res.should.have.property('status').eql(200);
                 res.should.be.a('object');
                 res.should.have.property('body');
-                // res.body.should.have.property('result');
                 res.body.should.have.property('error').eql(true);
                 res.body.should.have.property('message').eql('Some parameters are missing');
                 done();
@@ -51,7 +49,7 @@ describe('login: negative cases', () => {
     it('It should answer that username is incorrect', done => {
 
         const body = {
-            email: 'esimonyan2014@gmail',
+            email: 'esimonyan2014',
             password: 'eeeec'
         };
 
