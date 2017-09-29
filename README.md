@@ -12,6 +12,7 @@
 # If you have no time to register use these credentials
 
 login: affinitas@gmail.com
+
 pass: affinitas
 
 # If You want to run unit tests please follow instruction
